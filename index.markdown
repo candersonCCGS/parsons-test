@@ -7,6 +7,55 @@ title: Multiple Parson's Problems on One Page
 ---
 # Parsons Practice
 
+## New problem
+<div id="qn2-sortableTrash" class="sortable-code"></div> 
+<div id="qn2-sortable" class="sortable-code"></div> 
+<div style="clear:both;"></div> 
+<p> 
+    <input id="qn2-feedbackLink" value="Get Feedback" type="button" /> 
+    <input id="qn2-newInstanceLink" value="Reset Problem" type="button" /> 
+</p> 
+<script type="text/javascript"> 
+(function(){
+  var initial = "name = input(&#039;Enter a name: &#039;)\n" +
+    "if len(name) &gt; 5:\n" +
+    "	print(&#039;That is long&#039;)\n" +
+    "else:\n" +
+    "	print(&#039;Too short&#039;)\n" +
+    "print(f&#039;Hello {name}&#039;)\n" +
+    "print(&#039;Hello name&#039;) #distractor";
+  var parsonsPuzzle = new ParsonsWidget({
+    "sortableId": "qn2-sortable",
+    "max_wrong_lines": 10,
+    "grader": ParsonsWidget._graders.VariableCheckGrader,
+    "exec_limit": 2500,
+    "can_indent": true,
+    "x_indent": 50,
+    "lang": "en",
+    "show_feedback": true,
+    "trashId": "qn2-sortableTrash",
+    "vartests": [
+        {
+            "message": "",
+            "initcode": "",
+            "code": "",
+            "variables": {}
+        }
+    ]
+  });
+  parsonsPuzzle.init(initial);
+  parsonsPuzzle.shuffleLines();
+  $("#qn2-newInstanceLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.shuffleLines(); 
+  }); 
+  $("#qn2-feedbackLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.getFeedback(); 
+  }); 
+})(); 
+</script>
+
 ## My Problem
 <div id="qn1-sortableTrash" class="sortable-code"></div> 
 <div id="qn1-sortable" class="sortable-code"></div> 
